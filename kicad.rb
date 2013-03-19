@@ -10,9 +10,9 @@ end
 
 class Kicad < Formula
   homepage 'https://launchpad.net/kicad'
-  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '3920', :using => :bzr
+  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '4020', :using => :bzr
   head "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :using => :bzr
-  version 'testing-3920'
+  version 'testing-4020'
 
   depends_on 'bazaar'
   depends_on 'cmake' => :build
@@ -39,18 +39,10 @@ class Kicad < Formula
       system "cmake", ".", *args
       system "make install"
     end
-
-    if build.devel?
-      args = std_cmake_args + %W[
+    args = std_cmake_args + %W[
         -DKICAD_TESTING_VERSION=ON
         -DCMAKE_CXX_FLAGS=-D__ASSERTMACROS__
       ]
-    else
-      args = std_cmake_args + %W[
-        -DKICAD_STABLE_VERSION=ON
-        -DCMAKE_CXX_FLAGS=-D__ASSERTMACROS__
-      ]
-    end
 
     system "cmake", ".", *args
 
