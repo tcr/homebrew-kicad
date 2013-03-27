@@ -10,9 +10,9 @@ end
 
 class Kicad < Formula
   homepage 'https://launchpad.net/kicad'
-  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '4025', :using => :bzr
+  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '4031', :using => :bzr
   head "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :using => :bzr
-  version 'testing-4025'
+  version 'testing-4031'
 
   depends_on 'bazaar'
   depends_on 'cmake' => :build
@@ -25,6 +25,8 @@ class Kicad < Formula
     "https://gist.github.com/raw/4602653/0e4397884062c8fc44a9627e78fb4d2af20eed5b/gistfile1.txt",
     # enable retina display for OSX
     "https://gist.github.com/raw/4602849/2fe826c13992c4238a0462c03138f4c6aabd4968/gistfile1.txt"
+    # wxoverlay patch
+    "https://gist.github.com/jboone/2763241/raw/1d72e077c64fae00fffe1506c2b24263fc9760bd/wxWidgets-kicad-overlay.patch"
     ]
   end
 
