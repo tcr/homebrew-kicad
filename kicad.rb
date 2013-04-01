@@ -10,9 +10,9 @@ end
 
 class Kicad < Formula
   homepage 'https://launchpad.net/kicad'
-  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '4042', :using => :bzr
+  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '4059', :using => :bzr
   head "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :using => :bzr
-  version 'testing-4042'
+  version 'testing-4059'
 
   depends_on 'bazaar'
   depends_on 'cmake' => :build
