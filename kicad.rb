@@ -3,6 +3,7 @@ require 'formula'
 class KicadLibrary < Formula
   homepage 'https://code.launchpad.net/~kicad-lib-committers/kicad/library'
   url 'https://code.launchpad.net/~kicad-lib-committers/kicad/library', :revision => '232', :using => :bzr
+  head 'https://code.launchpad.net/~kicad-lib-committers/kicad/library', :using => :bzr
   version 'testing-232'
 
   def initialize; super 'kicad-library'; end
@@ -10,9 +11,9 @@ end
 
 class Kicad < Formula
   homepage 'https://launchpad.net/kicad'
-  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '4100', :using => :bzr
+  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '4103', :using => :bzr
   head "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :using => :bzr
-  version 'testing-4100'
+  version 'testing-4103'
 
   depends_on 'bazaar'
   depends_on 'cmake' => :build
