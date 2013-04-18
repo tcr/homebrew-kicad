@@ -2,8 +2,8 @@ require 'formula'
 
 class KicadLibrary < Formula
   homepage 'https://code.launchpad.net/~kicad-lib-committers/kicad/library'
-  url 'https://code.launchpad.net/~kicad-lib-committers/kicad/library', :using => :bzr
-  version 'HEAD'
+  url 'https://code.launchpad.net/~kicad-lib-committers/kicad/library', :revision => '232', :using => :bzr
+  version 'testing-232'
 
   def initialize; super 'kicad-library'; end
 end
