@@ -27,6 +27,7 @@ class Kicad < Formula
     # enable retina display for OSX
     "https://gist.github.com/raw/4602849/2fe826c13992c4238a0462c03138f4c6aabd4968/gistfile1.txt",
     #Various small patches to KICAD for OSX
+    DATA
     #"https://gist.github.com/shaneburrell/5255741/raw/c34c16f4b9a5895b53dd1e1f494515652de290b1/kicad-patch.txt"
     ]
   end
@@ -77,3 +78,15 @@ class Kicad < Formula
     system "open #{bin}/kicad.app"
   end
 end
+__END__
+=== modified file 'CMakeLists.txt'
+--- CMakeLists.txt /    2013-04-13 21:27:04 +0000
++++ CMakeLists.txt	2013-04-18 19:25:34 +0000
+@@ -9,7 +9,6 @@
+ # Locations for install targets.
+ if(UNIX)
+     if(APPLE)
+-    else(APPLE)
+         # Like all variables, CMAKE_INSTALL_PREFIX can be over-ridden on the command line.
+         set(CMAKE_INSTALL_PREFIX /usr/local
+             CACHE PATH "")
