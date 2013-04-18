@@ -7,7 +7,7 @@ class KicadLibrary < Formula
   version 'testing-232'
   def  patches
   [
-	DATA
+	"https://gist.github.com/shaneburrell/5415623/raw/0d79ff29cdcc2b01a2366ec3a52ce1f2e8ef0e0f/gistfile1.txt"
 
   ]
   end
@@ -82,15 +82,3 @@ class Kicad < Formula
     system "open #{bin}/kicad.app"
   end
 end
-__END__
-=== modified file 'CMakeLists.txt'
---- CMakeLists.txt /    2013-04-13 21:27:04 +0000
-+++ CMakeLists.txt	2013-04-18 19:25:34 +0000
-@@ -9,7 +9,6 @@
- # Locations for install targets.
- if(UNIX)
-     if(APPLE)
--    else(APPLE)
-         # Like all variables, CMAKE_INSTALL_PREFIX can be over-ridden on the command line.
-         set(CMAKE_INSTALL_PREFIX /usr/local
-             CACHE PATH "")
