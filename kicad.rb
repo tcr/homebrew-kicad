@@ -2,9 +2,7 @@ require 'formula'
 
 class KicadLibrary < Formula
   homepage 'https://code.launchpad.net/~kicad-lib-committers/kicad/library'
-  url 'https://code.launchpad.net/~kicad-lib-committers/kicad/library', :revision => '232', :using => :bzr
   head 'https://code.launchpad.net/~kicad-lib-committers/kicad/library', :using => :bzr
-  version 'testing-232'
   def  patches
   [
 	"https://gist.github.com/shaneburrell/5415623/raw/0d79ff29cdcc2b01a2366ec3a52ce1f2e8ef0e0f/gistfile1.txt"
@@ -16,9 +14,7 @@ end
 
 class Kicad < Formula
   homepage 'https://launchpad.net/kicad'
-  url "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :revision => '4192', :using => :bzr
   head "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/testing/", :using => :bzr
-  version 'testing-4192'
 
   depends_on 'bazaar'
   depends_on 'cmake' => :build
