@@ -3,12 +3,6 @@ require 'formula'
 class KicadLibrary < Formula
   homepage 'https://code.launchpad.net/~kicad-lib-committers/kicad/library'
   head 'https://code.launchpad.net/~kicad-lib-committers/kicad/library', :using => :bzr
-  def  patches
-  [
-	"https://gist.github.com/shaneburrell/5415623/raw/0d79ff29cdcc2b01a2366ec3a52ce1f2e8ef0e0f/gistfile1.txt"
-
-  ]
-  end
   def initialize; super 'kicad-library'; end
 end
 
@@ -20,17 +14,18 @@ class Kicad < Formula
   depends_on 'cmake' => :build
   depends_on :x11
   depends_on 'Wxmac'
+  depends_on 'GLEW'
 
   def patches
     [
     # fixes wx-config not requiring aui module
-    "https://gist.github.com/raw/4602653/0e4397884062c8fc44a9627e78fb4d2af20eed5b/gistfile1.txt",
+    #"https://gist.github.com/raw/4602653/0e4397884062c8fc44a9627e78fb4d2af20eed5b/gistfile1.txt",
     # enable retina display for OSX
-    "https://gist.github.com/raw/4602849/2fe826c13992c4238a0462c03138f4c6aabd4968/gistfile1.txt",
+    #"https://gist.github.com/raw/4602849/2fe826c13992c4238a0462c03138f4c6aabd4968/gistfile1.txt",
     #Various small patches to KICAD for OSX
     #"https://gist.github.com/shaneburrell/5255741/raw/c34c16f4b9a5895b53dd1e1f494515652de290b1/kicad-patch.txt"
     # Don't use bzr patch, it's from bzrtools which isn't part of homebrew's bazaar
-    "https://gist.github.com/raw/5744452/d955cdf73968029a17f8b89f420345da40d91569/gistfile1.txt"
+    #"https://gist.github.com/raw/5744451/d955cdf73968029a17f8b89f420345da40d91569/gistfile1.txt"
     ]
   end
 
