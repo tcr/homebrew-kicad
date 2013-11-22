@@ -84,3 +84,16 @@ index 5f19823..983ac61 100644
  
      # [Mis-]use this step to erase all the boost headers and libraries before
      # replacing them below.
+
+diff --git a/CMakeModules/download_boost.cmake b/CMakeModules/download_boost.cmake
+index 22affc6..8615c5f 100644
+--- a/CMakeModules/download_boost.cmake
++++ b/CMakeModules/download_boost.cmake
+@@ -140,7 +140,6 @@ ExternalProject_Add( boost
+                     variant=release
+                     threading=multi
+                     toolset=gcc
+-                    ${PIC_STUFF}
+                     ${b2_libs}
+                     #link=static
+                     --prefix=<INSTALL_DIR>
