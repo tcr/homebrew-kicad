@@ -17,16 +17,7 @@ class Kicad < Formula
   depends_on 'GLEW'
 
   def patches
-    [
-    # fixes wx-config not requiring aui module
-    #"https://gist.github.com/raw/4602653/0e4397884062c8fc44a9627e78fb4d2af20eed5b/gistfile1.txt",
-    # enable retina display for OSX
-    #"https://gist.github.com/raw/4602849/2fe826c13992c4238a0462c03138f4c6aabd4968/gistfile1.txt",
-    #Various small patches to KICAD for OSX
-    #"https://gist.github.com/shaneburrell/5255741/raw/c34c16f4b9a5895b53dd1e1f494515652de290b1/kicad-patch.txt"
-    # Don't use bzr patch, it's from bzrtools which isn't part of homebrew's bazaar
-    "https://gist.github.com/raw/5744451/d955cdf73968029a17f8b89f420345da40d91569/gistfile1.txt"
-    ]
+	DATA
   end
 
   def install
@@ -76,3 +67,20 @@ class Kicad < Formula
     system "open #{bin}/kicad.app"
   end
 end
+
+__END__
+diff --git a/CMakeModules/download_boost.cmake b/CMakeModules/download_boost.cmake
+index 5f19823..983ac61 100644
+--- a/CMakeModules/download_boost.cmake
++++ b/CMakeModules/download_boost.cmake
+@@ -126,8 +126,8 @@ ExternalProject_Add( boost
+     # to ignore previously applied patches
+     PATCH_COMMAND   bzr revert
+         # PATCH_COMMAND continuation (any *_COMMAND here can be continued with COMMAND):
+-        COMMAND     bzr patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_minkowski.patch"
+-        COMMAND     bzr patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_cstdint.patch"
++        COMMAND     patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_minkowski.patch"
++        COMMAND     patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_cstdint.patch"
+ 
+     # [Mis-]use this step to erase all the boost headers and libraries before
+     # replacing them below.
