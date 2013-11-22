@@ -79,8 +79,8 @@ index 5f19823..983ac61 100644
          # PATCH_COMMAND continuation (any *_COMMAND here can be continued with COMMAND):
 -        COMMAND     bzr patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_minkowski.patch"
 -        COMMAND     bzr patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_cstdint.patch"
-+        COMMAND     patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_minkowski.patch"
-+        COMMAND     patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_cstdint.patch"
++        COMMAND     patch -p0 < "${PROJECT_SOURCE_DIR}/patches/boost_minkowski.patch"
++        COMMAND     patch -p0 < "${PROJECT_SOURCE_DIR}/patches/boost_cstdint.patch"
  
      # [Mis-]use this step to erase all the boost headers and libraries before
      # replacing them below.
