@@ -25,7 +25,7 @@ class Kicad < Formula
     #Various small patches to KICAD for OSX
     #"https://gist.github.com/shaneburrell/5255741/raw/c34c16f4b9a5895b53dd1e1f494515652de290b1/kicad-patch.txt"
     # Don't use bzr patch, it's from bzrtools which isn't part of homebrew's bazaar
-    #"https://gist.github.com/raw/5744451/d955cdf73968029a17f8b89f420345da40d91569/gistfile1.txt"
+    "https://gist.github.com/raw/5744451/d955cdf73968029a17f8b89f420345da40d91569/gistfile1.txt"
     ]
   end
 
@@ -49,7 +49,7 @@ class Kicad < Formula
     system "cmake", ".", *args
 
     # fix the osx search path for the library components to the homebrew directory
-    inreplace 'common/edaappl.cpp','/Library/Application Support/kicad', "#{HOMEBREW_PREFIX}/share/kicad"
+    inreplace 'common/edaappl.cpp','/Library/Application Support', "#{HOMEBREW_PREFIX}/share/kicad"
 
     system "make install"
   end
