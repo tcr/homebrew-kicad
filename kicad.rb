@@ -69,6 +69,19 @@ class Kicad < Formula
 end
 
 __END__
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c095557..0a0f2da 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,7 +78,7 @@ mark_as_advanced( KICAD_USER_CONFIG_DIR )
+ # Set flags for GCC.
+ #================================================
+
+-if( CMAKE_COMPILER_IS_GNUCXX )
++if( CMAKE_COMPILER_IS_GNUCXX OR ("${CMAKE_CXX_COMPILER_ID}" MATCHES ".*Clang") )
+
+     execute_process( COMMAND ${CMAKE_C_COMPILER} -dumpversion
+         OUTPUT_VARIABLE GCC_VERSION
 diff --git a/CMakeModules/download_boost.cmake b/CMakeModules/download_boost.cmake
 index 5f19823..983ac61 100644
 --- a/CMakeModules/download_boost.cmake
@@ -97,3 +110,16 @@ index 22affc6..8615c5f 100644
                      ${b2_libs}
                      #link=static
                      --prefix=<INSTALL_DIR>
+diff --git a/CMakeModules/download_boost.cmake b/CMakeModules/download_boost.cmake
+index 8615c5f..9805b97 100644
+--- a/CMakeModules/download_boost.cmake
++++ b/CMakeModules/download_boost.cmake
+@@ -139,9 +139,7 @@ ExternalProject_Add( boost
+     BUILD_COMMAND   ./b2
+                     variant=release
+                     threading=multi
+-                    toolset=gcc
+                     ${b2_libs}
+-                    #link=static
+                     --prefix=<INSTALL_DIR>
+                     install
