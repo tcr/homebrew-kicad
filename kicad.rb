@@ -1,10 +1,5 @@
 require 'formula'
 
-class KicadLibrary < Formula
-  homepage 'https://code.launchpad.net/~kicad-lib-committers/kicad/library'
-  head 'https://code.launchpad.net/~kicad-lib-committers/kicad/library', :using => :bzr
-  def initialize; super 'kicad-library'; end
-end
 
 class Kicad < Formula
   homepage 'https://launchpad.net/kicad'
@@ -22,16 +17,6 @@ class Kicad < Formula
 
   def install
 
-    # install the component libraries
-    KicadLibrary.new.brew do
-      args = std_cmake_args + %W[
-        -DKICAD_MODULES=#{share}/kicad/modules
-        -DKICAD_LIBRARY=#{share}/kicad/library
-        -DKICAD_TEMPLATES=#{share}/kicad/template
-      ]
-      system "cmake", ".", *args
-      system "make install"
-    end
     args = std_cmake_args + %W[
         -DKICAD_TESTING_VERSION=ON
         -DCMAKE_CXX_FLAGS=-D__ASSERTMACROS__
