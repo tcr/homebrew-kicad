@@ -89,3 +89,16 @@ index 1840793..61f56c1 100644
 -                    #link=static
                      --prefix=<INSTALL_DIR>
                      install
+
+diff --git a/CMakeModules/download_boost.cmake b/CMakeModules/download_boost.cmake
+index 61f56c1..401695e 100644
+--- a/CMakeModules/download_boost.cmake
++++ b/CMakeModules/download_boost.cmake
+@@ -219,6 +219,7 @@ mark_as_advanced( Boost_LIBRARIES Boost_INCLUDE_DIR )
+ 
+ 
+ ExternalProject_Add_Step( boost bzr_commit_boost
++    COMMAND bzr whoami --branch --directory <SOURCE_DIR> "Kicad Build <nobody@example.com>"
+     COMMAND bzr ci -q -m pristine <SOURCE_DIR>
+     COMMENT "committing pristine boost files to 'boost scratch repo'"
+     DEPENDERS patch
