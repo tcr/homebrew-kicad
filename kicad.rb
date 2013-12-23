@@ -10,6 +10,7 @@ class Kicad < Formula
   depends_on :x11
   depends_on 'Wxmac'
   depends_on 'GLEW'
+  depends_on 'Cairo'
 
   def patches
 	DATA
