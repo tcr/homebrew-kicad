@@ -88,5 +88,3 @@ index 1840793..61f56c1 100644
 -                    #link=static
                      --prefix=<INSTALL_DIR>
                      install
- 
-
