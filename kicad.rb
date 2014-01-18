@@ -21,6 +21,7 @@ class Kicad < Formula
     args = std_cmake_args + %W[
         -DKICAD_TESTING_VERSION=ON
         -DCMAKE_CXX_FLAGS=-D__ASSERTMACROS__
+        -DCMAKE_OSX_ARCHITECTURES=#{MacOS.preferred_arch}
       ]
 
     system "cmake", ".", *args
@@ -55,46 +56,24 @@ class Kicad < Formula
 end
 
 __END__
-diff --git a/CMakeModules/download_boost.cmake b/CMakeModules/download_boost.cmake
-index 5f19823..983ac61 100644
---- a/CMakeModules/download_boost.cmake
-+++ b/CMakeModules/download_boost.cmake
-@@ -126,8 +126,8 @@ ExternalProject_Add( boost
-     # to ignore previously applied patches
-     PATCH_COMMAND   bzr revert
-         # PATCH_COMMAND continuation (any *_COMMAND here can be continued with COMMAND):
--        COMMAND     bzr patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_minkowski.patch"
--        COMMAND     bzr patch -p0 "${PROJECT_SOURCE_DIR}/patches/boost_cstdint.patch"
-+        COMMAND     patch -p0 < "${PROJECT_SOURCE_DIR}/patches/boost_minkowski.patch"
-+        COMMAND     patch -p0 < "${PROJECT_SOURCE_DIR}/patches/boost_cstdint.patch"
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3a38d84..5ef82b2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -342,7 +342,7 @@ endif()
  
-     # [Mis-]use this step to erase all the boost headers and libraries before
-     # replacing them below.
-
+ # On Apple only wxwidgets 2.9 or higher doesn't need to find aui part of base
+ if( APPLE )
+-    find_package( wxWidgets COMPONENTS gl adv html core net base xml QUIET )
++    find_package( wxWidgets COMPONENTS gl aui adv html core net base xml QUIET )
+ else()
+     find_package( wxWidgets COMPONENTS gl aui adv html core net base xml QUIET )
+ endif()
 diff --git a/CMakeModules/download_boost.cmake b/CMakeModules/download_boost.cmake
-index 1840793..61f56c1 100644
+index dd72e7c..2e42fdd 100644
 --- a/CMakeModules/download_boost.cmake
 +++ b/CMakeModules/download_boost.cmake
-@@ -170,14 +170,12 @@ ExternalProject_Add( boost
-     BUILD_COMMAND   ./b2
-                     variant=release
-                     threading=multi
--                    ${PIC_STUFF}
-                     ${BOOST_TOOLSET}
-                     ${BOOST_CXXFLAGS}
-                     ${BOOST_LINKFLAGS}
-                     ${BOOST_ADDRESSMODEL}
-                     ${BOOST_ARCHITECTURE}
-                     ${b2_libs}
--                    #link=static
-                     --prefix=<INSTALL_DIR>
-                     install
-
-diff --git a/CMakeModules/download_boost.cmake b/CMakeModules/download_boost.cmake
-index 61f56c1..401695e 100644
---- a/CMakeModules/download_boost.cmake
-+++ b/CMakeModules/download_boost.cmake
-@@ -219,6 +219,7 @@ mark_as_advanced( Boost_LIBRARIES Boost_INCLUDE_DIR )
+@@ -272,6 +272,7 @@ mark_as_advanced( Boost_LIBRARIES Boost_INCLUDE_DIR )
  
  
  ExternalProject_Add_Step( boost bzr_commit_boost
