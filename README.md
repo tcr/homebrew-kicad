@@ -3,7 +3,7 @@
 Homebrew Formula for the KiCad EDA Software
 
 I try to update this daily for KICAD Builds
-
+NOTE: This is currently in flux and may not work on your system!!!!!!
 ## Install
 
     brew tap shaneburrell/homebrew-kicad
