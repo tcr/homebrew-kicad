@@ -3,7 +3,7 @@ require 'formula'
 
 class Kicad < Formula
   homepage 'https://launchpad.net/kicad'
-  head "http://bazaar.launchpad.net/~kicad-testing-committers/kicad/product/", :using => :bzr
+  head "http://bazaar.launchpad.net/~kicad-product-committers/kicad/product/", :using => :bzr
 
   depends_on 'bazaar'
   depends_on 'cmake' => :build
